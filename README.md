@@ -17,3 +17,8 @@ Code: diceRoll() {
   Math.floor((Math.random()*6) +1);
 }
 Expected Output: ("1-6") ~ completed
+
+Test: It will add to currentScore if the roll is not 1
+Code: playerOne.diceRoll()
+playerOne 
+Expected Output: sum of currentScore ~ completed
