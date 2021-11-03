@@ -27,3 +27,9 @@ Test: It will return currentScore = 0 if 1 is rolled
 code: playerOne.diceRoll(1)
 playerOne 
 Expected Output: (0) ~ completed
+
+
+Describe switchTurn()
+Test: It will add currentScore to totalScore
+Code: playerone.switchTurn()
+Expected Ouput: currentScore + totalScore

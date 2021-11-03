@@ -1,8 +1,8 @@
 //Business Logic
 function Players(user, currentScore, totalScore) {
   this.user = user;
-  this.currentScore = currentScore;
-  this.totalScore = totalScore;
+  this.currentScore = 0;
+  this.totalScore = 0;
 }
 
 Players.prototype.diceRoll = function() {
@@ -11,12 +11,19 @@ Players.prototype.diceRoll = function() {
       this.currentScore += number;
     } else if (number === 1) {
       this.currentScore = 0;
-      
+      this.switchTurn();
     }
-    return number
+       return number;
 }
 
-let playerOne = new Players("player1", 0)
+Players.prototype.switchTurn = function() {
+  this.totalScore += this.currentScore;
+  this.currentScore = 0;
+}
+
+let playerOne = new Players("Player 1", 0)
+let playerTwo = new Players("Player 2", 0)
 
 //playerOne.diceRoll()
 //playerOne
+
