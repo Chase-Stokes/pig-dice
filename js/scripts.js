@@ -3,6 +3,7 @@ function Players(user, currentScore, totalScore) {
   this.user = user;
   this.currentScore = 0;
   this.totalScore = 0;
+  this.bool = true;
 }
 
 Players.prototype.diceRoll = function() {
@@ -12,9 +13,9 @@ Players.prototype.diceRoll = function() {
       this.checkWinner();
     } else if (number === 1) {
       this.currentScore = 0;
-      this.newTotal();
+      this.bool = false;
     }
-       return number;
+      return number;
 }
 
 Players.prototype.newTotal = function() {
@@ -27,6 +28,11 @@ Players.prototype.checkWinner = function() {
   if (this.currentScore >=100 || this.totalScore >= 100){
     alert("You are the Winner!!!")
   }
+}
+
+function switchTurn(bool) {
+  let newBool = !bool;
+  return newBool;
 }
 
 let playerOne = new Players("Player 1", 0)

@@ -28,7 +28,6 @@ code: playerOne.diceRoll(1)
 playerOne 
 Expected Output: (0) ~ completed
 
-
 Describe newTotal()
 Test: It will add currentScore to totalScore
 Code: playerone.newTotal()
@@ -38,7 +37,15 @@ Test: When you add the currentScore to the totalScore the current goes back to 0
 Code: playerOne.newTotal(); playerOne
 Expacted Output: playerOne.currentScore(0) ~completed
 
+
 Describe checkWinner()
 Test: If current score or total score >= 100 then a winner is declared
 Code: playerOne.checkWinner()
-Expected Output: "Congratulations player one winner!" ~completed
+Expected Output: "You are the winner!" ~completed
+
+
+Describe switchTurn(bool)
+Test: If number rolled equals 1 then returns false and turn is switched
+Code: playerOne.switchTurn()
+Expected Output: false and switch the players turn ~completed
+  
