@@ -29,7 +29,16 @@ playerOne
 Expected Output: (0) ~ completed
 
 
-Describe switchTurn()
+Describe newTotal()
 Test: It will add currentScore to totalScore
-Code: playerone.switchTurn()
-Expected Ouput: currentScore + totalScore
+Code: playerone.newTotal()
+Expected Ouput: currentScore + totalScore ~completed
+
+Test: When you add the currentScore to the totalScore the current goes back to 0
+Code: playerOne.newTotal(); playerOne
+Expacted Output: playerOne.currentScore(0) ~completed
+
+Describe checkWinner()
+Test: If current score or total score >= 100 then a winner is declared
+Code: playerOne.checkWinner()
+Expected Output: "Congratulations player one winner!" ~completed
