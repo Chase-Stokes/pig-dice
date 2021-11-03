@@ -22,3 +22,8 @@ Test: It will add to currentScore if the roll is not 1
 Code: playerOne.diceRoll()
 playerOne 
 Expected Output: sum of currentScore ~ completed
+
+Test: It will return currentScore = 0 if 1 is rolled
+code: playerOne.diceRoll(1)
+playerOne 
+Expected Output: (0) ~ completed
