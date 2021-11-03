@@ -3,17 +3,25 @@ function Players(user, currentScore, totalScore) {
   this.user = user;
   this.currentScore = 0;
   this.totalScore = 0;
-  this.bool = true;
+}
+
+function PlayerTurn(){
+  playerOneTurn = true
+}
+
+function switchTurn(bool) {
+  let newBool = !bool;
+  return newBool;
 }
 
 Players.prototype.diceRoll = function() {
-  let number = Math.floor((Math.random() * 6) + 1);
+  let number = Math.floor((Math.random() * 6) + 1);  
     if (number != 1) {
       this.currentScore += number;
       this.checkWinner();
     } else if (number === 1) {
       this.currentScore = 0;
-      this.bool = false;
+      switchTurn(playerTurn.playerOneTurn);
     }
       return number;
 }
@@ -30,13 +38,34 @@ Players.prototype.checkWinner = function() {
   }
 }
 
-function switchTurn(bool) {
-  let newBool = !bool;
-  return newBool;
-}
 
-let playerOne = new Players("Player 1", 0)
-let playerTwo = new Players("Player 2", 0)
+
+//UI Logic
+let playerTurn = new PlayerTurn();
+let playerOne = new Players("Player 1", 0);
+let playerTwo = new Players("Player 2", 0);
+
+//function showCurrentAndTotal(playerOne, playerTwo) {
+ 
+//}
+
+$(document).ready(function(){
+
+  $(".p1current").html(playerOne.currentScore);
+  $(".p1total").html(playerOne.totalScore);
+  $(".p2current").html(playerTwo.currentScore);
+  $(".p2total").html(playerTwo.totalScore);
+  //console.log(diceRoll)
+  /*$("#roll").click(function () {
+    playerOne.diceRoll();
+  });
+ 
+  $("#hold").click(function() {
+    totalScore.hold();
+  })*/
+});
+
+
 
 //playerOne.diceRoll()
 //playerOne
