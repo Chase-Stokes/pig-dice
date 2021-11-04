@@ -1,18 +1,26 @@
 //Business Logic
-function Players(user, currentScore, totalScore) {
-  this.user = user;
+function Players(currentScore, totalScore) {
   this.currentScore = 0;
   this.totalScore = 0;
 }
 
-function PlayerTurn(){
-  playerOneTurn = true
-}
+// function PlayerTurn(){
+//   let playerOneTurn = true;
+//   // let playerTwoTurn = false;
+// }
 
-function switchTurn(bool) {
-  let newBool = !bool;
-  return newBool;
-}
+// Players.prototype.switchTurn = function() {
+//   // let playerOne = true;
+//   // let playerTwo = false;
+//   if (playerTurn === true) {
+//     playerOne.diceRoll();
+//   }else {
+//     playerTwo.diceRoll();
+  
+//   }
+   //return newBool;
+//}
+
 
 Players.prototype.diceRoll = function() {
   let number = Math.floor((Math.random() * 6) + 1);  
@@ -20,11 +28,16 @@ Players.prototype.diceRoll = function() {
       this.currentScore += number;
       this.checkWinner();
     } else if (number === 1) {
+      //toggle();
       this.currentScore = 0;
-      switchTurn(playerTurn.playerOneTurn);
+      
+      // this.switchTurn();
+      // playerTurn === !playerTurn;
+      // switchTurn(/*playerTurn.playerOneTurn*/);
     }
       return number;
 }
+
 
 Players.prototype.newTotal = function() {
   this.totalScore += this.currentScore;
@@ -41,28 +54,45 @@ Players.prototype.checkWinner = function() {
 
 
 //UI Logic
-let playerTurn = new PlayerTurn();
-let playerOne = new Players("Player 1", 0);
-let playerTwo = new Players("Player 2", 0);
+// let playerTurn = new PlayerTurn();
+// // let playerTurn = true;
+
+/*function toggle() {
+  $("#roll", "#hold").toggle();
+  $("#roll1", "#hold1").toggle();
+}*/
+let playerOne = new Players();
+let playerTwo = new Players();
 
 //function showCurrentAndTotal(playerOne, playerTwo) {
  
 //}
 
 $(document).ready(function(){
+  $(".p1current").text(playerOne.currentScore);
+  $(".p1total").text(playerOne.totalScore);
+  $(".p2current").text(playerTwo.currentScore);
+  $(".p2total").text(playerTwo.totalScore);
 
-  $(".p1current").html(playerOne.currentScore);
-  $(".p1total").html(playerOne.totalScore);
-  $(".p2current").html(playerTwo.currentScore);
-  $(".p2total").html(playerTwo.totalScore);
-  //console.log(diceRoll)
-  /*$("#roll").click(function () {
+  $("#roll").on("click", function () {
     playerOne.diceRoll();
+      $(".p1current").text(playerOne.currentScore);
   });
+  $("#roll1").on("click", function(){
+    playerTwo.diceRoll();
+    $(".p2current").text(playerTwo.currentScore);
+  })
  
-  $("#hold").click(function() {
-    totalScore.hold();
-  })*/
+  $("#hold").on("click", function() {
+    playerOne.newTotal();
+    $(".p1total").text(playerOne.totalScore);
+    //toggle();
+  });
+  $("#hold1").on("click", function() {
+    playerTwo.newTotal();
+    $(".p2total").text(playerTwo.totalScore);
+   // toggle();
+  });
 });
 
 
